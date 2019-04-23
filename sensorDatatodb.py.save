@@ -1,0 +1,32 @@
+import time
+import sqlite3 as lite
+import Adafruit_DHT
+
+dbname = 'humidityTemp_data.db'
+def getdata():
+	humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 16) 		if humidity is not None and temperature is not None:
+			humidity = round(humidity, 4)
+			temperature = round(temperature, 4)
+			logData(temperature, humidity)
+			time.sleep(5)
+			counter = counter + 1
+
+def logData(temperature, humidity):
+	conn = lite.connect(dbname)
+	curs = conn.cursor()
+	curs.execute("INSERT INTO DHT_data VALUES(datetime('now'), (?), (?))", (temperature, humidity))
+	conn.commit()
+	conn.close()
+
+def displayData():
+	conn = lite.connect(dbname)
+	curs=conn.cursor()
+	print("\nEntire database contents: \n")
+	for row in curs.execute("SELECT * FROM DHT_data"):
+		print (row)
+	conn.close()
+
+
+getdata()
+displayData()
+

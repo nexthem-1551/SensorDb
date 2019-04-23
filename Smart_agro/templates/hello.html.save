@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <div class="jumbotron text-center display-3">
+    <b>Sensor Data Displayed Here</b>
+  </div>
+  <div class="jumbotron text-center">
+    <b>Temperature ==> {{ data.temperature }}*C</b>
+    <br>
+    <b>Humidity(R) ==> {{ data.humidity }}%</b>
+    <br>
+    <b>Last Sensors Reading: {{ data.time }}</b>     <br>
+    <a href="/hello" class="btn btn-primary btn-lg" role="button">Refresh</a>
+  </div>
+{% endblock %}
+

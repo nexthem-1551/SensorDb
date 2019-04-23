@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <meta http-equiv="refresh" content="5">  
+  <div class="jumbotron text-center display-3">
+    <b>Sensor Data Displayed Here</b>
+  </div>
+<div class="jumbotron text-center">
+    <b>Temperature ==> {{ temperature }}*C</b>
+    <br>
+    <b>Humidity(R) ==> {{ humidity }}%</b>
+    <br>
+    <b>Last Sensors Reading ==> {{ time }}</b> 
+    <br>
+    <b>Moisture Value ==> {{ value }}</b>  
+    <br>
+    <br>
+    <a href="/hello" class="btn btn-primary btn-lg" role="button">Refresh</a>
+    <a href="/pumpon" class="btn btn-primary btn-lg" role="button">Pump On</a>
+  </div>
+{% endblock %}
+

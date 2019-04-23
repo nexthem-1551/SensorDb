@@ -1,0 +1,36 @@
+from flask import Flask, render_template, redirect, session, url_for, flash, request, logging, Response
+import sqlite3 as lite
+app = Flask(__name__)
+
+def getdata():
+        counter = 0
+        while counter < 1:
+                humidity, temperature = Adafruit_DHT.read_retry(Adafruit_$
+                if humidity is not None and temperature is not None:
+                        humidity = round(humidity, 4)
+                        temperature = round(temperature, 4)
+                        logData(temperature, humidity)
+                        time.sleep(5)
+               
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html', title="ABOUT")
+
+@app.route('/hello')
+def hello():
+	return render_template('hello.html', title="DATA")
+
+@app.route('/login')
+def login():
+	return render_template('login.html', title="LOGIN")
+    
+if __name__ == '__main__':
+    app.secret_key='12345secret'
+    app.run(debug=True, port=80, host='0.0.0.0')
+
